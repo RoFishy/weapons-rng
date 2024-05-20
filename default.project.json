@@ -9,6 +9,12 @@
       }
     },
 
+    "ServerStorage": {
+      "Modules" : {
+        "$path": "src/storage"
+      }
+    },
+
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
