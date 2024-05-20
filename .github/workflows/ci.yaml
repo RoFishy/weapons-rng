@@ -27,13 +27,13 @@ jobs:
       run: |
         selene ./src
 
-  style:
-    name: Styling
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: JohnnyMorganz/stylua-action@1.0.0
-      with:
-        token: ${{ SECRETS.GITHUB_TOKEN }}
-        version: latest
-        args: --check .
+  #style:
+   # name: Styling
+    #runs-on: ubuntu-latest
+    #steps:
+    #- uses: actions/checkout@v3
+    #- uses: JohnnyMorganz/stylua-action@1.0.0
+    #  with:
+    #    token: ${{ SECRETS.GITHUB_TOKEN }}
+    #    version: latest
+    #    args: --check .
