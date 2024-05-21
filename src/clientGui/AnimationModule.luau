@@ -23,7 +23,7 @@ return {
 		Title.Visible = true
 		Rarity.Visible = true
 
-		for i, Table in ipairs(RolledNumber) do
+		for _, Table in ipairs(RolledNumber) do
 			AnimateText(Title, Rarity, Table)
 		end
 
