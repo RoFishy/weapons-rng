@@ -7,6 +7,7 @@ m.ChanceList = {
 		Name = "Common",
 		Items = {
 			"Pistol",
+			"Shotgun",
 		},
 	},
 
@@ -16,14 +17,27 @@ m.ChanceList = {
 		Name = "Rare",
 		Items = {
 			"Assault Rifle",
+			"SMG",
+		},
+	},
+
+	["Epic"] = {
+		Color = Color3.fromRGB(210, 98, 255),
+		Chance = 15,
+		Name = "Epic",
+		Items = {
+			"Sniper",
+			"Crossbow",
 		},
 	},
 
 	["Legendary"] = {
 		Color = Color3.fromRGB(255, 169, 10),
-		Chance = 13,
+		Chance = 25,
 		Name = "Legendary",
 		Items = {
+			"Grenade Launcher",
+			"Railgun",
 			"Rocket Launcher",
 		},
 	},
