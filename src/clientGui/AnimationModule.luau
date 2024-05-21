@@ -30,7 +30,7 @@ return {
 		task.wait(1)
 
 		Background.Visible = false
-		Title.Visible = false
+		Title.Visible = false -- this is a comment
 		Rarity.Visible = false
 	end,
 }
