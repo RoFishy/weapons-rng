@@ -15,6 +15,6 @@ Button.MouseButton1Click:Connect(function()
 		AnimationModule.RollAnimation(ScreenUI.Animations, RolledNumber)
 
 		wait(1)
-		Debounce = false
+		Debounce = false -- Resetting the debounce
 	end
 end)
