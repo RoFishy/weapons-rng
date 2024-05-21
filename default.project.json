@@ -10,13 +10,19 @@
     },
 
     "ServerStorage": {
-      "$path": "src/storage"
+      "Modules": {
+        "$path": "src/storage"
+      }
     },
 
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
       }
+    },
+
+    "StarterGui": {
+      "$path": "src/clientGui"
     },
 
     "StarterPlayer": {

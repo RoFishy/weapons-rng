@@ -1,8 +1,15 @@
-print("Hello world, from server!")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-game.Workspace.Baseplate.BrickColor = BrickColor.new("Earth green")
-game.Workspace.Baseplate.Transparency = 0.7
+local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 
-local module = require(game:GetService("ServerStorage").moduleOne)
+local ChancesList = require(game:GetService("ServerStorage").Modules.ChancesList)
+local SelectChance = require(game:GetService("ServerStorage").Modules.SelectChance)
 
-module:Print()
+Remotes:WaitForChild("RollFunction").OnServerInvoke = function(player)
+	local Table = {}
+
+	for i = 1, 7 do
+		table.insert(Table, SelectChance:GetRandomIndex(ChancesList.ChanceList))
+	end
+	return Table
+end
