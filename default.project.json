@@ -3,12 +3,6 @@
   "tree": {
     "$className": "DataModel",
 
-    "ReplicatedStorage": {
-      "Shared": {
-        "$path": "src/shared"
-      }
-    },
-
     "ServerStorage": {
       "Modules": {
         "$path": "src/storage"
