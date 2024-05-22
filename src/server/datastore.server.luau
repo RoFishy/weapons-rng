@@ -1,8 +1,7 @@
 local Players = game:GetService("Players")
---local DatastoreService = game:GetService("DataStoreService")
---local WeaponsStore = DatastoreService:GetDataStore("WeaponsStore")
+local DatastoreService = game:GetService("DataStoreService")
+local WeaponsStore = DatastoreService:GetDataStore("WeaponsStore")
 
---[[
 function SaveData(Player)
 	local WeaponsTable = {}
 	for _, v in pairs(Player.Weapons:GetChildren()) do
@@ -17,14 +16,12 @@ function SaveData(Player)
 		warn(Error)
 	end
 end
---]]
 
 Players.PlayerAdded:Connect(function(Player)
 	local Weapons = Instance.new("Folder")
 	Weapons.Name = "Weapons"
 	Weapons.Parent = Player
 
-	--[[
 	local Data
 	local _, _ = pcall(function()
 		Data = WeaponsStore:GetAsync(Player.UserId)
@@ -38,11 +35,8 @@ Players.PlayerAdded:Connect(function(Player)
 			WeaponValue.Parent = Weapons
 		end
 	end
-    --]]
 end)
 
---[[
 Players.PlayerRemoving:Connect(function(Player)
 	SaveData(Player)
 end)
---]]

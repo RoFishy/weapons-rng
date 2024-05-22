@@ -3,26 +3,24 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ToolsFolder = ReplicatedStorage:WaitForChild("Weapons")
 
-local function GiveToolWithoutDuplicates(toolName, backpack)
-	if backpack:FindFirstChild(toolName) == nil then
-		local WeaponTool = ToolsFolder:FindFirstChild(toolName)
-		if WeaponTool == nil then
-			return
-		end
-
-		local clonedTool = WeaponTool:Clone()
-		clonedTool.Parent = backpack
+local function GiveToolByName(toolName, backpack)
+	local WeaponTool = ToolsFolder:FindFirstChild(toolName)
+	if WeaponTool == nil then
+		return
 	end
+
+	local clonedTool = WeaponTool:Clone()
+	clonedTool.Parent = backpack
 end
 
 Players.PlayerAdded:Connect(function(Player)
 	local connection = nil
-	Player.CharacterAdded:Connect(function(character)
+	Player.CharacterAdded:Connect(function(_)
 		local Weapons = Player:WaitForChild("Weapons")
 		local Backpack = Player.Backpack
 
 		for _, object in Weapons:GetChildren() do
-			GiveToolWithoutDuplicates(object.Value, Backpack)
+			GiveToolByName(object.Value, Backpack)
 		end
 
 		if connection then
@@ -30,7 +28,7 @@ Players.PlayerAdded:Connect(function(Player)
 		end
 
 		connection = Weapons.ChildAdded:Connect(function(Child)
-			GiveToolWithoutDuplicates(Child.Value, Backpack)
+			GiveToolByName(Child.Value, Backpack)
 		end)
 	end)
 end)
