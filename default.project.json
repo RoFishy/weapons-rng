@@ -18,15 +18,7 @@
     "StarterGui": {
       "$path": "src/clientGui"
     },
-
-    "StarterPlayer": {
-      "StarterPlayerScripts": {
-        "Client": {
-          "$path": "src/client"
-        }
-      }
-    },
-
+    
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true

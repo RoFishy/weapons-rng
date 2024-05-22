@@ -7,6 +7,8 @@ local AnimationModule = require(script.Parent:WaitForChild("AnimationModule"))
 local ScreenUI = script.Parent:WaitForChild("UI"):WaitForChild("ScreenGui")
 local Button = ScreenUI:WaitForChild("TextButton")
 
+-- Roll Functions
+
 local Debounce = false
 
 Button.MouseButton1Click:Connect(function()

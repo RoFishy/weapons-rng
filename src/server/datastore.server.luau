@@ -38,7 +38,7 @@ Players.PlayerAdded:Connect(function(Player)
 end)
 
 Players.PlayerRemoving:Connect(function(Player)
-	SaveData(Player)
+	SaveData(Player) -- saves data
 end)
 
 game:BindToClose(function()
