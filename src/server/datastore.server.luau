@@ -40,3 +40,9 @@ end)
 Players.PlayerRemoving:Connect(function(Player)
 	SaveData(Player)
 end)
+
+game:BindToClose(function()
+	for _, Player in pairs(Players:GetPlayers()) do
+		SaveData(Player)
+	end
+end)
