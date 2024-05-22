@@ -3,32 +3,34 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ToolsFolder = ReplicatedStorage:WaitForChild("Weapons")
 
+local function GiveToolWithoutDuplicates(toolName, backpack)
+	if backpack:FindFirstChild(toolName) == nil then
+		local WeaponTool = ToolsFolder:FindFirstChild(toolName)
+		if WeaponTool == nil then
+			return
+		end
+
+		local clonedTool = WeaponTool:Clone()
+		clonedTool.Parent = backpack
+	end
+end
+
 Players.PlayerAdded:Connect(function(Player)
-	local Weapons = Player:WaitForChild("Weapons")
-
 	local connection = nil
-	Player.CharacterAdded:Connect(function(_)
+	Player.CharacterAdded:Connect(function(character)
+		local Weapons = Player:WaitForChild("Weapons")
+		local Backpack = Player.Backpack
+
+		for _, object in Weapons:GetChildren() do
+			GiveToolWithoutDuplicates(object.Value, Backpack)
+		end
+
+		if connection then
+			connection:Disconnect()
+		end
+
 		connection = Weapons.ChildAdded:Connect(function(Child)
-			print("Child added!")
-			local Backpack = Player.Backpack
-			local WeaponName = Child.Value
-
-			for _, v in pairs(Backpack:GetChildren()) do
-				if v.Name == WeaponName then
-					print("Destroying...")
-					Child:Destroy()
-					break
-				end
-			end
-
-			local WeaponTool = ToolsFolder:WaitForChild(WeaponName):Clone()
-			print(WeaponTool.Name)
-			WeaponTool.Parent = Backpack
-			print("Gave them the tool!")
+			GiveToolWithoutDuplicates(Child.Value, Backpack)
 		end)
-	end)
-
-	Player.CharacterRemoving:Connect(function()
-		connection:Disconnect()
 	end)
 end)
